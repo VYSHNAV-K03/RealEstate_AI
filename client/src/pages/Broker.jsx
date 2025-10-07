@@ -24,32 +24,23 @@ const BrokerPanel = () => {
   const fetchPlots = async () => {
     try {
       const res = await axios.get(apiUrl + "api/broker/plots/get");
-      console.log(res.data);
-
       setPlots(res.data);
     } catch (error) {
       console.error("Error fetching plots:", error);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
-  const handleImageChange = (e) => {
-    setImages([...e.target.files]);
-  };
+  const handleImageChange = (e) => setImages([...e.target.files]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    Object.keys(form).forEach((key) => {
-      formData.append(key, form[key]);
-    });
-    images.forEach((img) => {
-      formData.append("images", img);
-    });
+    Object.keys(form).forEach((key) => formData.append(key, form[key]));
+    images.forEach((img) => formData.append("images", img));
 
     try {
       await axios.post(apiUrl + "api/broker/plots/add", formData, {
@@ -71,6 +62,20 @@ const BrokerPanel = () => {
       fetchPlots();
     } catch (error) {
       console.error("Error adding plot:", error);
+    }
+  };
+
+  // 🗑️ Delete plot function
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this property?")) {
+      try {
+        await axios.delete(apiUrl + `api/broker/plots/delete/${id}`);
+        alert("🗑️ Property deleted successfully!");
+        fetchPlots(); // refresh list
+      } catch (error) {
+        console.error("Error deleting property:", error);
+        alert("❌ Failed to delete property");
+      }
     }
   };
 
@@ -169,6 +174,12 @@ const BrokerPanel = () => {
                         <strong>Balconies:</strong> {plot.balcony} <br />
                         <strong>Price:</strong> ₹{plot.price} Lakhs
                       </p>
+                      <button
+                        className="btn btn-danger w-100 mt-2"
+                        onClick={() => handleDelete(plot._id)}
+                      >
+                        🗑️ Delete
+                      </button>
                     </div>
                   </div>
                 </div>

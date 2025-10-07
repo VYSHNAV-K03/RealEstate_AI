@@ -147,7 +147,7 @@ const PlotDetails = () => {
             <strong>Balcony:</strong> {plot.balcony}
           </p>
           <h4 className="text-success mt-3">
-            ₹ {plot.price?.toLocaleString()}
+            ₹ {plot.price?.toLocaleString()} Lakhs
           </h4>
         </div>
       </div>

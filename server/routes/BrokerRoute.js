@@ -50,4 +50,18 @@ router.post("/plots/add", upload.array("images", 5), async (req, res) => {
   }
 });
 
+// 🗑️ Delete Plot by ID
+router.delete("/plots/delete/:id", async (req, res) => {
+  try {
+    const plot = await Plot.findByIdAndDelete(req.params.id);
+    if (!plot) {
+      return res.status(404).json({ message: "Plot not found" });
+    }
+    res.json({ message: "Plot deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting plot:", error);
+    res.status(500).json({ message: "Server error while deleting plot" });
+  }
+});
+
 module.exports = router;
