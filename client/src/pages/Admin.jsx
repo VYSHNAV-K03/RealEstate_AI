@@ -32,7 +32,7 @@ const AdminPanel = () => {
   const handleToggleVerification = async (id, isVerified) => {
     try {
       await axiosInstance.patch(`/admin/organisers/${id}/verify`);
-      setSuccess(`User ${isVerified ? "unverified" : "verified"} successfully`);
+      setSuccess(`${isVerified ? "Unverified" : "Verified"} successfully`);
 
       setOrganisers(
         organisers.map((org) =>
@@ -58,6 +58,7 @@ const AdminPanel = () => {
           <tr>
             <th>Username</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -67,6 +68,7 @@ const AdminPanel = () => {
             <tr key={org._id}>
               <td>{org.username}</td>
               <td>{org.email}</td>
+              <td>{org.role}</td>
               <td>{org.isVerified ? "Verified" : "Unverified"}</td>
               <td>
                 <button

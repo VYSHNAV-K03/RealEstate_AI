@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          HospitalFraud
+          RealEstateAI
         </Link>
         <button
           className="navbar-toggler"
@@ -58,14 +58,6 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">
                       Dashboard
-                    </Link>
-                  </li>
-                )}
-
-                {user.role === "user" && (
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/patient">
-                      Patient
                     </Link>
                   </li>
                 )}

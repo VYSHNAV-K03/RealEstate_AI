@@ -64,9 +64,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", require("./routes/auth"));
-app.use("/api/patient", require("./routes/patientRoute"));
-// app.use('/api/reports', require('./routes/reportUpload'));
 app.use("/api/admin", require("./routes/adminRoutes"));
+app.use("/api/user", require("./routes/userRoute"));
+app.use("/api/broker", require("./routes/BrokerRoute"));
 
 // Listen on port 6000
 const PORT = 7000;

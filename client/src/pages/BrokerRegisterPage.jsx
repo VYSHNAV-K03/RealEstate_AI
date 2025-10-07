@@ -3,7 +3,7 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const DoctorRegisterPage = () => {
+const BrokerRegisterPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -44,7 +44,7 @@ const DoctorRegisterPage = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axiosInstance.post("/register/doctor", formData);
+      const response = await axiosInstance.post("/register/broker", formData);
       setMessage(response.data.message);
       setError("");
       setTimeout(() => {
@@ -61,14 +61,14 @@ const DoctorRegisterPage = () => {
       <div className="row w-75 shadow-lg p-5 bg-white rounded">
         <div className="col-md-6 d-flex justify-content-center align-items-center">
           <img
-            src="/images/register-insurance.svg"
+            src="/images/register_broker.svg"
             alt="Doctor Illustration"
             className="img-fluid"
             style={{ maxWidth: "80%" }}
           />
         </div>
         <div className="col-md-6">
-          <h2 className="text-center mb-4">Register as Insurance Officer</h2>
+          <h2 className="text-center mb-4">Register as Counsellor</h2>
           {message && <div className="alert alert-success">{message}</div>}
           {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={handleSubmit}>
@@ -154,4 +154,4 @@ const DoctorRegisterPage = () => {
   );
 };
 
-export default DoctorRegisterPage;
+export default BrokerRegisterPage;

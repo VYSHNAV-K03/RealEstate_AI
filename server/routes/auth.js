@@ -28,14 +28,13 @@ router.post("/register/user", async (req, res) => {
       email,
       password: hashedPassword,
       phone,
+      isVerified: true,
       role: "user", // Default role as 'user'
     });
 
     await newUser.save();
 
-    res
-      .status(201)
-      .json({ message: "User registered successfully", user: newUser });
+    res.status(201).json({ message: "Registered successfully", user: newUser });
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Server error" });
@@ -43,7 +42,7 @@ router.post("/register/user", async (req, res) => {
 });
 
 // Doctor Registration
-router.post("/register/doctor", async (req, res) => {
+router.post("/register/broker", async (req, res) => {
   const { username, email, password, phone } = req.body;
 
   try {
@@ -63,7 +62,7 @@ router.post("/register/doctor", async (req, res) => {
       email,
       password: hashedPassword,
       phone,
-      role: "doctor", // Role as 'doctor'
+      role: "broker", // Role as 'doctor'
       isVerified: false, // Not verified by default
     });
 

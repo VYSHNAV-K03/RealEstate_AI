@@ -5,14 +5,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DoctorRegisterPage from "./pages/DoctorRegisterPage";
-import Dashboard from "./pages/Dashboard";
 import AdminPanel from "./pages/Admin";
-import DoctorPanel from "./pages/DoctorPanel";
 import Profile from "./pages/Profile";
-import AttritionExplainer from "./pages/Dashboard";
-import FraudPredictionForm from "./pages/FraudPredictionForm";
-import Patient from "./pages/Patient";
+import BrokerRegisterPage from "./pages/BrokerRegisterPage";
+import BrokerPanel from "./pages/Broker";
+import PlotDetails from "./pages/PlotDetails";
 
 const App = () => {
   return (
@@ -23,13 +20,13 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/register-doctor" element={<DoctorRegisterPage />} />
-          <Route path="/dashboard" element={<FraudPredictionForm />} />
+          <Route path="/register-doctor" element={<BrokerRegisterPage />} />
 
           <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/doctor" element={<DoctorPanel />} />
-          <Route path="/patient" element={<Patient />} />
+          <Route path="/broker" element={<BrokerPanel />} />
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/plot/:id" element={<PlotDetails />} />
         </Routes>
       </div>
     </Router>

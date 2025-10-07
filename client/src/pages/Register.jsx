@@ -67,7 +67,7 @@ const Register = () => {
         />
       </div>
       <div className="w-50 d-flex flex-column justify-content-center align-items-center bg-light p-5">
-        <h2 className="mb-4">Register As a Patient</h2>
+        <h2 className="mb-4">Register</h2>
         {message && <div className="alert alert-success w-100">{message}</div>}
         {error && <div className="alert alert-danger w-100">{error}</div>}
         <form onSubmit={handleSubmit} className="w-75">
@@ -135,7 +135,7 @@ const Register = () => {
             className="btn btn-secondary w-100"
             onClick={() => navigate("/register-doctor")}
           >
-            Register as Insurance Officer
+            Register As Broker
           </button>
         </form>
       </div>

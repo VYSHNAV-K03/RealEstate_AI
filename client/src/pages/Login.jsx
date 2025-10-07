@@ -39,11 +39,12 @@ const Login = () => {
 
       if (user.role === "admin") {
         navigate("/admin");
-      } else if (user.role === "doctor") {
-        navigate("/dashboard");
+      } else if (user.role === "broker") {
+        navigate("/broker");
       } else {
-        navigate("/patient");
+        navigate("/");
       }
+      location.reload();
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
       setMessage("");
